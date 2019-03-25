@@ -23,7 +23,7 @@ Now we need to install the dependencies
 
 The speedtest script needs to be run at regular intervals to provide readings.
 In future versions this will be converted into a `systemd` service however until this is implemented
-crontab can be used.
+a simple `Bash` script can be used.
 The following script will take a reading every 30 minutes.
 ```bash
 #!/bin/sh
