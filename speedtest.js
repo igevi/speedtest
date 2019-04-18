@@ -5,7 +5,7 @@ const test = speedTest({
     maxTime: 5000
 })
 const fs = require('fs')
-const plotly = require('plotly')('user', 'api_key')
+const plotly = require('plotly')(process.env.API_USER, process.env.API_KEY)
 const graphType = "scatter"
 const graphOptions = {
     filename: "date-axes",

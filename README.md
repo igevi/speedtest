@@ -23,31 +23,18 @@ Now we need to install the dependencies
 
 The speedtest script needs to be run at regular intervals to provide readings.
 In future versions this will be converted into a `systemd` service however until this is implemented
-a simple `Bash` script can be used.
-The following script will take a reading every 30 minutes.
-```bash
-#!/bin/sh
-while true
-do
-	node speedtest
-	sleep 30m
-done
-```
-
-`chmod +x script.sh`
-
-The script can then be run in the background with
-
-`./script.sh &`
-
-The server can then be run in the background with
-
-`node index &`
+a simple `Bash` script can be used, see script.sh.
 
 The Node.js/Express.js server is programmed to run on port 8080. This allows it to run without sudo privileges.
 To access this on port 80, a simple iptables rule can be written if the device is Linux based.
 
 `iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8080`
+
+If you prefer docker
+```
+docker build . -t speedtest
+docker run -it --env-file ./.env -p 8080:8080 speedtest
+```
 
 ## Changelog
 
